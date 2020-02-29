@@ -1,6 +1,10 @@
 import React from "react";
 import { connect } from "react-redux";
-import { setGap, setClosingTime } from "../redux/actions/settingsActions";
+import {
+  setGap,
+  setClosingTime,
+  setLastBreak
+} from "../redux/actions/settingsActions";
 import "../styles/settingStyles.scss";
 
 class Settings extends React.Component {
@@ -12,6 +16,10 @@ class Settings extends React.Component {
     } else {
       await this.props.setGap(window.localStorage.getItem("breakGap"));
       this.setState({ gap: parseInt(this.props.gap) / 1000 / 60 });
+    }
+
+    if (!window.localStorage.getItem("lastBreaktTime")) {
+      await this.props.setLastBreak();
     }
 
     if (!window.localStorage.getItem("closingTime")) {
@@ -68,7 +76,7 @@ class Settings extends React.Component {
             className="input"
             type="text"
             name="gap"
-            placeholder={`saved value: ${this.props.gap}`}
+            placeholder={`saved value: ${this.props.gap / 1000 / 60}`}
             value={this.state.gap}
             onChange={this.handleGapChange}
           />
@@ -95,4 +103,8 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps, { setGap, setClosingTime })(Settings);
+export default connect(mapStateToProps, {
+  setGap,
+  setClosingTime,
+  setLastBreak
+})(Settings);

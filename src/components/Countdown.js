@@ -14,6 +14,7 @@ class Countdown extends React.Component {
     // update every second
     clearInterval(this.interval);
     this.interval = setInterval(() => {
+      console.log("çalıştım");
       const date = this.calculateCountdown();
       date ? this.setState(date) : this.stop();
     }, 1000);
