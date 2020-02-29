@@ -1,0 +1,4 @@
+export const SET_GAP = "SET_GAP";
+export const SET_CLOSING_TIME = "SET_CLOSING_TIME";
+export const FETCH_LAST_BREAK_TIME = "FETCH_LAST_BREAK_TIME";
+export const SET_LAST_BREAK_TIME = "SET_LAST_BREAK_TIME";

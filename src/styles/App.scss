@@ -1,0 +1,28 @@
+.center {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  .servedMyTime {
+    background-color: #04c886;
+    border-radius: 5px;
+    border: 1px solid #157c59;
+    display: inline-block;
+    cursor: pointer;
+    color: #ffffff;
+    font-family: Arial;
+    font-size: 22px;
+    padding: 24px 50px;
+    text-decoration: none;
+    text-shadow: 0px 1px 0px #2f6627;
+    &:hover {
+      background-color: #0caa76;
+    }
+    &:active {
+      position: relative;
+      top: 1px;
+    }
+  }
+}
