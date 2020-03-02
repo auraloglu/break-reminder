@@ -58,7 +58,7 @@ class Countdown extends React.Component {
 
   stop() {
     this.setState({ fireNotification: true });
-    // clearInterval(this.interval);
+    clearInterval(this.interval);
   }
 
   addLeadingZeros(value) {

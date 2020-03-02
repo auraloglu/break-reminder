@@ -21,6 +21,7 @@ class App extends React.Component {
   handleServedMyTime = async () => {
     await this.props.setLastBreak();
     await this.props.fetchLastBreak();
+    window.location.reload();
   };
 
   render() {
