@@ -5,10 +5,11 @@ import {
   setClosingTime,
   setLastBreak
 } from "../redux/actions/settingsActions";
-import "../styles/settingStyles.scss";
+import { IoMdSettings } from "react-icons/io";
+import "../styles/Settings.scss";
 
 class Settings extends React.Component {
-  state = { gap: "", closingTime: "", isOpen: false };
+  state = { gap: "", closingTime: "", isOpen: false, isSettings: true };
 
   componentDidMount = async () => {
     if (!window.localStorage.getItem("breakGap")) {
@@ -67,32 +68,48 @@ class Settings extends React.Component {
     }
   }
 
-  render() {
+  renderSettings() {
     return (
-      <div>
-        <form onSubmit={this.handleSubmit}>
-          {this.saveResponse()}
-          <input
-            className="input"
-            type="text"
-            name="gap"
-            placeholder={`saved value: ${this.props.gap / 1000 / 60}`}
-            value={this.state.gap}
-            onChange={this.handleGapChange}
-          />
-          <label className="label">Gap (min)</label>
-          <input
-            className="input"
-            type="text"
-            placeholder={`saved value: ${this.props.closingTime}`}
-            value={this.state.closingTime}
-            onChange={this.handleClosingTimeChange}
-          />
-          <label className="label">Closing Time</label>
-          <input className="saveSettings" type="submit" value="Submit" />
-        </form>
+      <div
+        className="settings"
+        onClick={() => this.setState({ isSettings: !this.state.isSettings })}
+      >
+        <IoMdSettings className="settings-icon" />
+        <span className="settings-text">Settings</span>
       </div>
     );
+  }
+
+  render() {
+    if (!this.state.isSettings) {
+      return (
+        <div>
+          {this.renderSettings()}
+          <form onSubmit={this.handleSubmit}>
+            {this.saveResponse()}
+            <input
+              className="input"
+              type="text"
+              name="gap"
+              placeholder={`saved value: ${this.props.gap / 1000 / 60}`}
+              value={this.state.gap}
+              onChange={this.handleGapChange}
+            />
+            <label className="label">Gap (min)</label>
+            <input
+              className="input"
+              type="text"
+              placeholder={`saved value: ${this.props.closingTime}`}
+              value={this.state.closingTime}
+              onChange={this.handleClosingTimeChange}
+            />
+            <label className="label">Closing Time</label>
+            <input className="saveSettings" type="submit" value="Submit" />
+          </form>
+        </div>
+      );
+    }
+    return <>{this.renderSettings()}</>;
   }
 }
 

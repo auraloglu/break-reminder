@@ -12,9 +12,28 @@ html {
   font: 14px/1.4 Sans-Serif;
 }
 
-form {
+.settings {
   position: absolute;
   top: 0;
+  left: 0;
+  float: left;
+  margin: 20px;
+  z-index: 2;
+  .settings-icon {
+    width: 25px;
+    height: 25px;
+  }
+  .settings-text {
+    font-size: 22px;
+    font-weight: bold;
+    position: absolute;
+    top: 0;
+  }
+}
+
+form {
+  position: absolute;
+  top: 35px;
   left: 0;
   width: 320px;
   float: left;
