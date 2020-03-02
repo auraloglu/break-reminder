@@ -49,43 +49,45 @@ class Settings extends React.Component {
 
     if (!window.localStorage.getItem("breakNotificationHeader")) {
       this.setState({ breakNotifHeader: "It's Break Time!" });
-    } else
+    } else {
       await this.props.setBreakNotificationHeader(
         window.localStorage.getItem("breakNotificationHeader")
       );
-    this.setState({
-      breakNotifHeader: window.localStorage.getItem("breakNotificationHeader")
-    });
+      this.setState({
+        breakNotifHeader: window.localStorage.getItem("breakNotificationHeader")
+      });
+    }
 
     if (!window.localStorage.getItem("breakNotificationText")) {
       this.setState({ breakNotifText: "Lets have a break and get some air!" });
-    } else
+    } else {
       await this.props.setBreakNotificationText(
         window.localStorage.getItem("breakNotificationText")
       );
-    this.setState({
-      breakNotifText: window.localStorage.getItem("breakNotificationText")
-    });
-
+      this.setState({
+        breakNotifText: window.localStorage.getItem("breakNotificationText")
+      });
+    }
     if (!window.localStorage.getItem("endNotificationHeader")) {
       this.setState({ endNotifHeader: "IT'S GO TIME!" });
-    } else
+    } else {
       await this.props.setEndNotificationHeader(
         window.localStorage.getItem("endNotificationHeader")
       );
-    this.setState({
-      endNotifHeader: window.localStorage.getItem("endNotificationHeader")
-    });
-
+      this.setState({
+        endNotifHeader: window.localStorage.getItem("endNotificationHeader")
+      });
+    }
     if (!window.localStorage.getItem("endNotificationText")) {
       this.setState({ endNotifText: "Go home and get some rest!" });
-    } else
+    } else {
       await this.props.setEndNotificationText(
         window.localStorage.getItem("endNotificationText")
       );
-    this.setState({
-      endNotifText: window.localStorage.getItem("endNotificationText")
-    });
+      this.setState({
+        endNotifText: window.localStorage.getItem("endNotificationText")
+      });
+    }
   };
 
   handleGapChange = event => {
@@ -181,7 +183,7 @@ class Settings extends React.Component {
             <input
               className="input"
               type="text"
-              placeholder={`saved value: ${this.props.breakNotifHeader}`}
+              placeholder={`saved value: ${this.state.breakNotifHeader}`}
               value={this.state.breakNotifHeader}
               onChange={this.handleBreakNotifHeaderChange}
             />
@@ -189,7 +191,7 @@ class Settings extends React.Component {
             <input
               className="input"
               type="text"
-              placeholder={`saved value: ${this.props.breakNotifText}`}
+              placeholder={`saved value: ${this.state.breakNotifText}`}
               value={this.state.breakNotifText}
               onChange={this.handleBreakNotifTextChange}
             />
@@ -197,7 +199,7 @@ class Settings extends React.Component {
             <input
               className="input"
               type="text"
-              placeholder={`saved value: ${this.props.endNotifHeader}`}
+              placeholder={`saved value: ${this.state.endNotifHeader}`}
               value={this.state.endNotifHeader}
               onChange={this.handleEndNotifHeaderChange}
             />
@@ -205,7 +207,7 @@ class Settings extends React.Component {
             <input
               className="input"
               type="text"
-              placeholder={`saved value: ${this.props.endNotifText}`}
+              placeholder={`saved value: ${this.state.endNotifText}`}
               value={this.state.endNotifText}
               onChange={this.handleEndNotifTextChange}
             />
