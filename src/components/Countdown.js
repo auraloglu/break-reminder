@@ -7,14 +7,15 @@ class Countdown extends React.Component {
     hours: null,
     min: null,
     sec: null,
-    fireNotification: false
+    fireNotification: false,
+    now: null
   };
 
   componentDidMount() {
+    this.setState({ now: new Date() });
     // update every second
     clearInterval(this.interval);
     this.interval = setInterval(() => {
-      console.log("çalıştım");
       const date = this.calculateCountdown();
       date ? this.setState(date) : this.stop();
     }, 1000);
@@ -25,11 +26,23 @@ class Countdown extends React.Component {
   }
 
   calculateCountdown() {
+    let diff;
     this.setState({ fireNotification: false });
-    let diff = Math.floor(
-      (parseInt(this.props.lastBreak) + parseInt(this.props.gap) - Date.now()) /
-        1000
-    );
+    if (this.props.closingTime) {
+      var hr = this.props.closingTime.split(":");
+
+      var now = this.state.now;
+      now.setHours(parseInt(hr[0]));
+      now.setMinutes(parseInt(hr[1]));
+      diff = Math.floor((now.getTime() - Date.now()) / 1000);
+    } else {
+      diff = Math.floor(
+        (parseInt(this.props.lastBreak) +
+          parseInt(this.props.gap) -
+          Date.now()) /
+          1000
+      );
+    }
 
     // clear countdown when date is reached
     if (diff <= 0) return false;

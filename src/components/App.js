@@ -23,6 +23,7 @@ class App extends React.Component {
   };
 
   render() {
+    console.log(window.localStorage.getItem("closingTime"));
     return (
       <div className="center">
         <Settings />
@@ -35,8 +36,10 @@ class App extends React.Component {
           className="servedMyTime"
           onClick={() => this.handleServedMyTime()}
         >
-          Molaya Çıktım
+          Served My Time
         </button>
+        <h1 className="title">Countdown to End of Suffering:</h1>
+        <Countdown closingTime={this.props.closingTime} />
       </div>
     );
   }
@@ -44,7 +47,8 @@ class App extends React.Component {
 const mapStateToProps = state => {
   return {
     gap: state.settings.gap,
-    lastBreakTime: state.settings.lastBreakTime
+    lastBreakTime: state.settings.lastBreakTime,
+    closingTime: state.settings.closingTime
   };
 };
 

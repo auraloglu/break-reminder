@@ -10,6 +10,7 @@ export const setGap = gap => async dispatch => {
 };
 
 export const setClosingTime = closingTime => async dispatch => {
+  window.localStorage.setItem("closingTime", closingTime);
   dispatch({ type: SET_CLOSING_TIME, payload: closingTime });
 };
 
