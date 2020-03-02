@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/break-reminder/static/css/main.4c531585.chunk.css",
-    "main.js": "/break-reminder/static/js/main.68b5b427.chunk.js",
-    "main.js.map": "/break-reminder/static/js/main.68b5b427.chunk.js.map",
+    "main.js": "/break-reminder/static/js/main.a41b06c1.chunk.js",
+    "main.js.map": "/break-reminder/static/js/main.a41b06c1.chunk.js.map",
     "runtime-main.js": "/break-reminder/static/js/runtime-main.8c95c036.js",
     "runtime-main.js.map": "/break-reminder/static/js/runtime-main.8c95c036.js.map",
     "static/js/2.49bc731d.chunk.js": "/break-reminder/static/js/2.49bc731d.chunk.js",
     "static/js/2.49bc731d.chunk.js.map": "/break-reminder/static/js/2.49bc731d.chunk.js.map",
     "index.html": "/break-reminder/index.html",
-    "precache-manifest.3ab8c7d1f28ab19d545b0e7e937198d8.js": "/break-reminder/precache-manifest.3ab8c7d1f28ab19d545b0e7e937198d8.js",
+    "precache-manifest.23aa4826c6ea2d1b08f2b433fb9f8650.js": "/break-reminder/precache-manifest.23aa4826c6ea2d1b08f2b433fb9f8650.js",
     "service-worker.js": "/break-reminder/service-worker.js",
     "static/css/main.4c531585.chunk.css.map": "/break-reminder/static/css/main.4c531585.chunk.css.map",
     "static/js/2.49bc731d.chunk.js.LICENSE.txt": "/break-reminder/static/js/2.49bc731d.chunk.js.LICENSE.txt",
@@ -18,6 +18,6 @@
     "static/js/runtime-main.8c95c036.js",
     "static/js/2.49bc731d.chunk.js",
     "static/css/main.4c531585.chunk.css",
-    "static/js/main.68b5b427.chunk.js"
+    "static/js/main.a41b06c1.chunk.js"
   ]
 }
