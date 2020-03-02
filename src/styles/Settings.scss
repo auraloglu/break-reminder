@@ -13,6 +13,7 @@ html {
 }
 
 .settings {
+  cursor: pointer;
   position: absolute;
   top: 0;
   left: 0;
@@ -76,6 +77,8 @@ form {
     color: black;
     padding: 7px 6px;
     font-weight: bold;
+    width: 130px;
+    text-align: left;
   }
   textarea {
     display: block;

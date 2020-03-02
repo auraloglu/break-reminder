@@ -2,7 +2,11 @@ import {
   SET_GAP,
   SET_CLOSING_TIME,
   FETCH_LAST_BREAK_TIME,
-  SET_LAST_BREAK_TIME
+  SET_LAST_BREAK_TIME,
+  SET_BREAK_NOTIFICATION_HEADER,
+  SET_BREAK_NOTIFICATION_TEXT,
+  SET_END_NOTIFICATION_HEADER,
+  SET_END_NOTIFICATION_TEXT
 } from "./types/settingsTypes";
 
 export const setGap = gap => async dispatch => {
@@ -25,4 +29,25 @@ export const setLastBreak = () => async dispatch => {
   window.localStorage.setItem("lastBreaktTime", Date.now().toString());
 
   dispatch({ type: SET_LAST_BREAK_TIME, payload: Date.now().toString() });
+};
+
+export const setBreakNotificationHeader = header => async dispatch => {
+  window.localStorage.setItem("breakNotificationHeader", header);
+
+  dispatch({ type: SET_BREAK_NOTIFICATION_HEADER, payload: header });
+};
+export const setBreakNotificationText = text => async dispatch => {
+  window.localStorage.setItem("breakNotificationText", text);
+
+  dispatch({ type: SET_BREAK_NOTIFICATION_TEXT, payload: text });
+};
+export const setEndNotificationHeader = header => async dispatch => {
+  window.localStorage.setItem("endNotificationHeader", header);
+
+  dispatch({ type: SET_END_NOTIFICATION_HEADER, payload: header });
+};
+export const setEndNotificationText = text => async dispatch => {
+  window.localStorage.setItem("endNotificationText", text);
+
+  dispatch({ type: SET_END_NOTIFICATION_TEXT, payload: text });
 };

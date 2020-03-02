@@ -27,11 +27,10 @@ const Notifiaction = props => {
 
   const fireNotificationHandle = () => {
     if (fireNotification) {
-      console.log("fired");
       const now = Date.now();
 
-      const title = "MOLA VAKTİ";
-      const body = "Çıkıp hava alma zamanın geldi!";
+      const title = props.header;
+      const body = props.text;
       const tag = now;
       const icon =
         "https://www.newlifea2.org/wp-content/uploads/2015/07/Sermon_Breathe.jpg";
@@ -39,7 +38,8 @@ const Notifiaction = props => {
       const options = {
         tag: tag,
         body: body,
-        icon: icon
+        icon: icon,
+        sound: "../sound/closingTime.mp3"
       };
       setTitle(title);
       setOptions(options);
@@ -48,17 +48,18 @@ const Notifiaction = props => {
   };
 
   fireNotificationHandle();
-
   return (
-    <Notification
-      ignore={ignore && title !== ""}
-      notSupported={handleNotSupported.bind(this)}
-      onPermissionGranted={handlePermissionGranted.bind(this)}
-      onPermissionDenied={handlePermissionDenied.bind(this)}
-      timeout={5000}
-      title={title}
-      options={options}
-    />
+    <>
+      <Notification
+        ignore={ignore && title !== ""}
+        notSupported={handleNotSupported.bind(this)}
+        onPermissionGranted={handlePermissionGranted.bind(this)}
+        onPermissionDenied={handlePermissionDenied.bind(this)}
+        timeout={5000}
+        title={title}
+        options={options}
+      />
+    </>
   );
 };
 

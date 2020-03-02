@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import Settings from "./Settings";
 import Countdown from "./Countdown";
+import CountdownToLeave from "./CountdownToLeave";
 
 import { fetchLastBreak, setLastBreak } from "../redux/actions/settingsActions";
 import "../styles/App.scss";
@@ -23,7 +24,6 @@ class App extends React.Component {
   };
 
   render() {
-    console.log(window.localStorage.getItem("closingTime"));
     return (
       <div className="center">
         <Settings />
@@ -39,7 +39,7 @@ class App extends React.Component {
           Served My Time
         </button>
         <h1 className="title">Countdown to End of Suffering:</h1>
-        <Countdown closingTime={this.props.closingTime} />
+        <CountdownToLeave closingTime={this.props.closingTime} />
       </div>
     );
   }

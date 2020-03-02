@@ -1,5 +1,7 @@
 import React from "react";
+import { connect } from "react-redux";
 import Notification from "./Notification";
+
 import "../styles/Countdown.scss";
 
 class Countdown extends React.Component {
@@ -7,12 +9,10 @@ class Countdown extends React.Component {
     hours: null,
     min: null,
     sec: null,
-    fireNotification: false,
-    now: null
+    fireNotification: false
   };
 
   componentDidMount() {
-    this.setState({ now: new Date() });
     // update every second
     clearInterval(this.interval);
     this.interval = setInterval(() => {
@@ -26,23 +26,10 @@ class Countdown extends React.Component {
   }
 
   calculateCountdown() {
-    let diff;
-    this.setState({ fireNotification: false });
-    if (this.props.closingTime) {
-      var hr = this.props.closingTime.split(":");
-
-      var now = this.state.now;
-      now.setHours(parseInt(hr[0]));
-      now.setMinutes(parseInt(hr[1]));
-      diff = Math.floor((now.getTime() - Date.now()) / 1000);
-    } else {
-      diff = Math.floor(
-        (parseInt(this.props.lastBreak) +
-          parseInt(this.props.gap) -
-          Date.now()) /
-          1000
-      );
-    }
+    let diff = Math.floor(
+      (parseInt(this.props.lastBreak) + parseInt(this.props.gap) - Date.now()) /
+        1000
+    );
 
     // clear countdown when date is reached
     if (diff <= 0) return false;
@@ -111,10 +98,21 @@ class Countdown extends React.Component {
             <span>Sec</span>
           </span>
         </span>
-        <Notification fireNotification={this.state.fireNotification} />
+        <Notification
+          fireNotification={this.state.fireNotification}
+          header={this.props.breakNotifHeader}
+          text={this.props.breakNotifText}
+        />
       </div>
     );
   }
 }
 
-export default Countdown;
+const mapStateToProps = state => {
+  return {
+    breakNotifHeader: state.settings.breakNotificationHeader,
+    breakNotifText: state.settings.breakNotificationText
+  };
+};
+
+export default connect(mapStateToProps)(Countdown);
